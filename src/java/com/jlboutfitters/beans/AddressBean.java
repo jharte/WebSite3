@@ -66,6 +66,13 @@ public class AddressBean extends BaseBean {
         postalCode = addressObject.getPostalCode();
     }
 
+    public AddressBean(AddressObject addressObject, StateBean _state, CountryBean _country) {
+        this(addressObject.getAddressId(), addressObject.getStreet(), addressObject.getAddressLine1(), addressObject.getAddressLine2(), addressObject.getCity(), addressObject.getCounty(), _state.getStateName(), addressObject.getZipCode());
+        province = addressObject.getProvince();
+        country = _country.getCountryName();
+        postalCode = addressObject.getPostalCode();
+    }
+
     public int getAddressId() {
         return addressId;
     }

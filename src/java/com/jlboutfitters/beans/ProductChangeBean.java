@@ -18,7 +18,14 @@ public class ProductChangeBean extends BaseBean {
 
     public static final String LABEL_PRODUCT_ID = "Product Change Id";
 
+    public static final int STATUS_PENDING = ProductChangeObject.STATUS_PENDING;
+    public static final int STATUS_APPROVED = ProductChangeObject.STATUS_APPROVED;
+    public static final int STATUS_DENIED = ProductChangeObject.STATUS_DENIED;
+    public static final int STATUS_IN_PROCESS_APPROVED = ProductChangeObject.STATUS_IN_PROCESS_APPROVED;
+    public static final int STATUS_IN_PROCESS_DENIED = ProductChangeObject.STATUS_IN_PROCESS_DENIED;
+
     private int productChangeId;
+    private int status;
     private ProductBean changedProduct;
     private ProductBean originalProduct;
 
@@ -26,18 +33,19 @@ public class ProductChangeBean extends BaseBean {
         super();
     }
 
-    public ProductChangeBean(int _productChangeId) {
+    public ProductChangeBean(int _productChangeId, int _status) {
         this();
 
         productChangeId = _productChangeId;
+        status = _status;
     }
 
     public ProductChangeBean(ProductChangeObject productChangeObject) {
-        this(productChangeObject.getProductChangeId());
+        this(productChangeObject.getProductChangeId(), productChangeObject.getStatus());
     }
 
     public ProductChangeBean(ProductChangeObject productChangeObject, ProductBean _originalProduct, ProductBean _changedProduct) {
-        this(productChangeObject.getProductChangeId());
+        this(productChangeObject);
 
         changedProduct = _changedProduct;
         originalProduct = _originalProduct;

@@ -16,6 +16,11 @@ public class EmployeeBean extends UserBean {
     public static final String PROP_PHONE_NUMBER = "phoneNumber";
     public static final String PROP_MANAGER_IND = "managerInd";
 
+    public static final String LABEL_EMPLOYEE_ID = "Employee Id";
+    public static final String LABEL_EMAIL_ADDRESS = "Email Address";
+    public static final String LABEL_PHONE_NUMBER = "Phone Number";
+    public static final String LABEL_MANAGER_IND = "Manager Ind";
+
     private int employeeId;
     private String emailAddress;
     private PhoneNumberBean phoneNumber;

@@ -1,6 +1,7 @@
 <%@ include file="/include/session.jsp" %>
 <%@ page import="com.jlboutfitters.beans.EmployeeBean" %>
 <%@ page import="com.jlboutfitters.businessObjects.Employee" %>
+<%@ page import="com.jlboutfitters.utility.WebUtility" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Iterator" %>
 <%@ page import="java.util.Enumeration" %>
@@ -35,19 +36,19 @@
                         <a href="<%=FILENAME_ADD_EMPLOYEE%>"><button type="button">Create New Employee</button></a>
                     </th>
                     <th>
-                        Employee&nbsp;Id
+                        <%=WebUtility.spaceToNbsp(EmployeeBean.LABEL_EMPLOYEE_ID)%>
                     </th>
                     <th>
-                        Manager?
+                        <%=WebUtility.spaceToNbsp(EmployeeBean.LABEL_MANAGER_IND)%>
                     </th>
                     <th>
-                        First&nbsp;Name
+                        <%=WebUtility.spaceToNbsp(EmployeeBean.LABEL_FIRST_NAME)%>
                     </th>
                     <th>
-                        Last&nbsp;Name
+                        <%=WebUtility.spaceToNbsp(EmployeeBean.LABEL_LAST_NAME)%>
                     </th>
                     <th>
-                        Email&nbsp;Address
+                        <%=WebUtility.spaceToNbsp(EmployeeBean.LABEL_EMAIL_ADDRESS)%>
                     </th>
                     <th>
                         Phone&nbsp;Number

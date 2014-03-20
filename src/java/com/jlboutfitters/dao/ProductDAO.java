@@ -101,8 +101,7 @@ public class ProductDAO {
                                          + FIELD_PRICE + ","
                                          + FIELD_VENDOR_ID + ","
                                          + FIELD_CATEGORY_ID + " "
-                               + "FROM " + TABLE_PRODUCT + " "
-                              + "WHERE " + FIELD_PRODUCT_ID + "=?";
+                               + "FROM " + TABLE_PRODUCT;
             preparedStatement = connect.prepareStatement(sqlString);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {

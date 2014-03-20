@@ -1,11 +1,14 @@
+<%@page contentType="text/html" pageEncoding="UTF-8" errorPage="error_page.jsp"%>
+
 <%@ include file="/include/session.jsp" %>
+
 <%@ page import="com.jlboutfitters.beans.ProductChangeBean" %>
 <%@ page import="com.jlboutfitters.beans.ProductBean" %>
 <%@ page import="com.jlboutfitters.beans.BaseBean" %>
 <%@ page import="com.jlboutfitters.businessObjects.ProductChange" %>
+<%@ page import="com.jlboutfitters.utility.WebUtility" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Iterator" %>
-<%@ page import="java.util.Enumeration" %>
 
 <%
     // Page Specific Variables
@@ -37,22 +40,22 @@
                         &nbsp;
                     </th>
                     <th>
-                        <%=BaseBean.spaceToNbsp(ProductBean.LABEL_PRODUCT_CODE)%>
+                        <%=WebUtility.spaceToNbsp(ProductBean.LABEL_PRODUCT_CODE)%>
                     </th>
                     <th>
-                        Name
+                        <%=WebUtility.spaceToNbsp(ProductBean.LABEL_PRODUCT_NAME)%>
                     </th>
                     <th>
-                        Description
+                        <%=WebUtility.spaceToNbsp(ProductBean.LABEL_PRODUCT_DESCRIPTION)%>
                     </th>
                     <th>
-                        Category
+                        <%=WebUtility.spaceToNbsp(ProductBean.LABEL_CATEGORY)%>
                     </th>
                     <th>
-                        Vendor
+                        <%=WebUtility.spaceToNbsp(ProductBean.LABEL_VENDOR)%>
                     </th>
                     <th>
-                        Price
+                        <%=WebUtility.spaceToNbsp(ProductBean.LABEL_PRICE)%>
                     </th>
                 </tr>
 

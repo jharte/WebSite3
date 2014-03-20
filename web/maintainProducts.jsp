@@ -29,29 +29,29 @@
         <%@ include file="/include/menu_manager.jsp" %>
 
         <div class="pageBody">
-            <center><legend><b>Approve Products</b></legend><br/></center>
+            <center><legend><b>Maintain Products</b></legend><br/></center>
             <table border="1">
                 <tr>
                     <th>
                         <a href="<%=FILENAME_ADD_PRODUCT%>"><button type="button"><%=WebUtility.spaceToNbsp(LABEL_ADD_PRODUCT)%></button></a>
                     </th>
                     <th>
-                        Product&nbsp;Code
+                        <%=WebUtility.spaceToNbsp(ProductBean.LABEL_PRODUCT_CODE)%>
                     </th>
                     <th>
-                        Name
+                        <%=WebUtility.spaceToNbsp(ProductBean.LABEL_PRODUCT_NAME)%>
                     </th>
                     <th>
-                        Description
+                        <%=WebUtility.spaceToNbsp(ProductBean.LABEL_PRODUCT_DESCRIPTION)%>
                     </th>
                     <th>
-                        Category
+                        <%=WebUtility.spaceToNbsp(ProductBean.LABEL_PRICE)%>
                     </th>
                     <th>
-                        Vendor
+                        <%=WebUtility.spaceToNbsp(ProductBean.LABEL_CATEGORY)%>
                     </th>
                     <th>
-                        Price
+                        <%=WebUtility.spaceToNbsp(ProductBean.LABEL_VENDOR)%>
                     </th>
                 </tr>
 
@@ -79,10 +79,10 @@ while (it.hasNext())
                         <%=myProduct.getPrice()%>
                     </td>
                     <td>
-                        <%=myProduct.getVendor().getVendorName()%>
+                        <%=(myProduct.getCategory()==null)?"":myProduct.getCategory().getCategoryName()%>
                     </td>
                     <td>
-                        <%=myProduct.getCategory().getCategoryName()%>
+                        <%=(myProduct.getVendor()==null)?"":myProduct.getVendor().getVendorName()%>
                     </td>
                 </tr>
 <%

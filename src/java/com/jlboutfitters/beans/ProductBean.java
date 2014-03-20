@@ -22,13 +22,13 @@ public class ProductBean extends BaseBean {
     public static final String PROP_VENDOR = "vendor";
     public static final String PROP_CATEGORY = "category";
 
-    public static final String LABEL_PRODUCT_ID = "Product&nbsp;Id";
-    public static final String LABEL_PRODUCT_CODE = "productCode";
-    public static final String LABEL_PRODUCT_NAME = "productName";
-    public static final String LABEL_PRODUCT_DESCRIPTION = "productDescription";
-    public static final String LABEL_PRICE = "price";
-    public static final String LABEL_VENDOR = "vendor";
-    public static final String LABEL_CATEGORY = "category";
+    public static final String LABEL_PRODUCT_ID = "Product Id";
+    public static final String LABEL_PRODUCT_CODE = "Code";
+    public static final String LABEL_PRODUCT_NAME = "Name";
+    public static final String LABEL_PRODUCT_DESCRIPTION = "Description";
+    public static final String LABEL_PRICE = "Price";
+    public static final String LABEL_VENDOR = "Vendor";
+    public static final String LABEL_CATEGORY = "Category";
 
     private int productId;
     private String productCode;

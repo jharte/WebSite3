@@ -24,7 +24,7 @@ public class CustomerObject {
     private String phoneLineNumber;
     private String phoneExtension;
     private int mailingAddressId;
-    private int genderId;
+    //private int genderId;
 
     public CustomerObject() {
     }
@@ -41,8 +41,8 @@ public class CustomerObject {
                           String _phoneCountryPfx,
                           String _phoneLineNumber,
                           String _phoneExtension,
-                          int _mailingAddressId,
-                          int _genderId) {
+                          int _mailingAddressId) {
+                          //int _genderId) {
         this();
         customerId = _customerId;
         loginId = _loginId;
@@ -57,7 +57,7 @@ public class CustomerObject {
         phoneLineNumber = _phoneLineNumber;
         phoneExtension = _phoneExtension;
         mailingAddressId = _mailingAddressId;
-        genderId = _genderId;
+        //genderId = _genderId;
     }
 
     public int getCustomerId() {
@@ -164,11 +164,11 @@ public class CustomerObject {
         mailingAddressId = value;
     }
 
-    public int getGenderId() {
-        return genderId;
-    }
-
-    public void setGenderId(int value) {
-        genderId = value;
-    }
+//    public int getGenderId() {
+//        return genderId;
+//    }
+//
+//    public void setGenderId(int value) {
+//        genderId = value;
+//    }
 }

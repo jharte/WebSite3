@@ -27,6 +27,71 @@ import java.util.Iterator;
 public class ProductChange {
     public static String URLFIELD_PRODUCT_CHANGE_ID = "PRODUCT_CHANGE_ID";
 
+    public boolean approveProductChange(String id)
+            throws Exception
+    {
+        try {
+            int intId = Integer.valueOf(id.trim()).intValue();
+            approveProductChange(intId);
+        }
+        catch (Exception e)
+        {
+
+        }
+        return true;
+    }
+
+    public boolean approveProductChange(int id)
+            throws Exception
+    {
+        //ProductChangeBean productChangeBean = null;
+
+        ProductChangeDAO productChangeDAO = new ProductChangeDAO();
+
+        // Verify change request exists
+        ProductChangeObject productChangeObject = productChangeDAO.readProductChange(id);
+        if (productChangeObject == null)
+        {
+            return false;
+        }
+
+        // Change status to in progress
+        boolean statusChangeSucceeded = productChangeDAO.alterProductChangeStatus(id,ProductChangeBean.STATUS_IN_PROCESS_APPROVED);
+        if (!statusChangeSucceeded)
+        {
+            return false;
+        }
+
+        ProductDAO productDAO = new ProductDAO();
+        ProductObject productObject = productDAO.readProduct(productChangeObject.getProductId());
+        if (productObject == null)
+        {
+            // insert new record
+            productObject = new ProductObject(productChangeObject.getProductId(),
+                                              productChangeObject.getProductCode(),
+                                              productChangeObject.getProductName(),
+                                              productChangeObject.getProductDescription(),
+                                              productChangeObject.getPrice(),
+                                              productChangeObject.getVendorId(),
+                                              productChangeObject.getCategoryId());
+        }
+        else
+        {
+            // update record
+            productObject.setProductCode(productChangeObject.getProductCode());
+            productObject.setProductName(productChangeObject.getProductName());
+            productObject.setProductDescription(productChangeObject.getProductDescription());
+            productObject.setPrice(productChangeObject.getPrice());
+            productObject.setVendorId(productChangeObject.getVendorId());
+            productObject.setCategoryId(productChangeObject.getCategoryId());
+            productObject.setProductName(productChangeObject.getProductName());
+            productObject.setProductName(productChangeObject.getProductName());
+            productObject.setProductName(productChangeObject.getProductName());
+        }
+
+        return true;
+    }
+
     public ProductChangeBean readProductChange(int id)
             throws Exception
     {

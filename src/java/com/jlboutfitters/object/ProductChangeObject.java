@@ -13,6 +13,7 @@ import java.math.RoundingMode;
  */
 public class ProductChangeObject {
     private int productChangeId;
+    private int status;
     private int productId;
     private String productCode;
     private String productName;
@@ -21,10 +22,17 @@ public class ProductChangeObject {
     private int vendorId;
     private int categoryId;
 
+    public static final int STATUS_PENDING = 1;
+    public static final int STATUS_APPROVED = 2;
+    public static final int STATUS_DENIED = 3;
+    public static final int STATUS_IN_PROCESS_APPROVED = 3;
+    public static final int STATUS_IN_PROCESS_DENIED = 3;
+
     public ProductChangeObject() {
     }
 
     public ProductChangeObject(int _productChangeId,
+                               int _status,
                                int _productId,
                                String _productCode,
                                String _productName,
@@ -34,6 +42,7 @@ public class ProductChangeObject {
                                int _categoryId) {
         this();
         productChangeId = _productChangeId;
+        status = _status;
         productId = _productId;
         productCode = _productCode;
         productName = _productName;
@@ -49,6 +58,14 @@ public class ProductChangeObject {
 
     public void setProductChangeId(int value) {
         productChangeId = value;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int value) {
+        status = value;
     }
 
     public int getProductId() {

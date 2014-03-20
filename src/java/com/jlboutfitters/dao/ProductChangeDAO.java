@@ -20,6 +20,7 @@ public class ProductChangeDAO {
     final static String TABLE_PRODUCT_CHANGE = "PRODUCT_CHANGE";
 
     final static String FIELD_PRODUCT_CHANGE_ID = "PRODUCT_CHANGE_ID";
+    final static String FIELD_STATUS = "STATUS";
     final static String FIELD_PRODUCT_ID = "PRODUCT_ID";
     final static String FIELD_PRODUCT_CODE = "PRODUCT_CODE";
     final static String FIELD_PRODUCT_NAME = "PRODUCT_NAME";
@@ -49,6 +50,7 @@ public class ProductChangeDAO {
 
             // Set up the SQL productment
             String sqlString = "SELECT " + FIELD_PRODUCT_CHANGE_ID + ","
+                                         + FIELD_STATUS + ","
                                          + FIELD_PRODUCT_ID + ","
                                          + FIELD_PRODUCT_CODE + ","
                                          + FIELD_PRODUCT_NAME + ","
@@ -57,13 +59,15 @@ public class ProductChangeDAO {
                                          + FIELD_VENDOR_ID + ","
                                          + FIELD_CATEGORY_ID + " "
                                + "FROM " + TABLE_PRODUCT_CHANGE + " "
-                              + "WHERE " + FIELD_PRODUCT_CHANGE_ID + "=?";
+                              + "WHERE " + FIELD_STATUS + "=" + ProductChangeObject.STATUS_PENDING + " "
+                                         + FIELD_PRODUCT_CHANGE_ID + "=?";
             preparedStatement = connect.prepareStatement(sqlString);
             preparedStatement.setInt(1, id);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 productChangeObject = new ProductChangeObject();
                 productChangeObject.setProductChangeId(resultSet.getInt(FIELD_PRODUCT_CHANGE_ID));
+                productChangeObject.setStatus(resultSet.getInt(FIELD_STATUS));
                 productChangeObject.setProductId(resultSet.getInt(FIELD_PRODUCT_ID));
                 productChangeObject.setProductCode(resultSet.getString(FIELD_PRODUCT_CODE));
                 productChangeObject.setProductName(resultSet.getString(FIELD_PRODUCT_NAME));
@@ -97,15 +101,17 @@ public class ProductChangeDAO {
             statement = connect.createStatement();
 
             // Set up the SQL productment
-            String sqlString = "SELECT " + FIELD_PRODUCT_ID + ","
-                                         + FIELD_PRODUCT_CHANGE_ID + ","
+            String sqlString = "SELECT " + FIELD_PRODUCT_CHANGE_ID + ","
+                                         + FIELD_STATUS + ","
+                                         + FIELD_PRODUCT_ID + ","
                                          + FIELD_PRODUCT_CODE + ","
                                          + FIELD_PRODUCT_NAME + ","
                                          + FIELD_PRODUCT_DESCRIPTION + ","
                                          + FIELD_PRICE + ","
                                          + FIELD_VENDOR_ID + ","
                                          + FIELD_CATEGORY_ID + " "
-                               + "FROM " + TABLE_PRODUCT_CHANGE;
+                               + "FROM " + TABLE_PRODUCT_CHANGE + " "
+                              + "WHERE " + FIELD_STATUS + "=" + ProductChangeObject.STATUS_PENDING;
             //Removed condition
             //                  + "WHERE " + FIELD_PRODUCT_CHANGE_ID + "=?";
             preparedStatement = connect.prepareStatement(sqlString);
@@ -113,6 +119,7 @@ public class ProductChangeDAO {
             while (resultSet.next()) {
                 productChangeObject = new ProductChangeObject();
                 productChangeObject.setProductChangeId(resultSet.getInt(FIELD_PRODUCT_CHANGE_ID));
+                productChangeObject.setStatus(resultSet.getInt(FIELD_STATUS));
                 productChangeObject.setProductId(resultSet.getInt(FIELD_PRODUCT_ID));
                 productChangeObject.setProductCode(resultSet.getString(FIELD_PRODUCT_CODE));
                 productChangeObject.setProductName(resultSet.getString(FIELD_PRODUCT_NAME));
@@ -132,6 +139,35 @@ public class ProductChangeDAO {
         }
 
         return productChanges;
+    }
+
+    public boolean alterProductChangeStatus(int id, int status)
+            throws Exception
+    {
+        try {
+            // Statements allow to issue SQL queries to the database
+            DBObject dbObject = new DBObject();
+            connect = dbObject.getConnection();
+            statement = connect.createStatement();
+
+            // Set up the SQL productment
+            String sqlString = "UPDATE " + TABLE_PRODUCT_CHANGE + " "
+                                + "SET " + FIELD_STATUS + "=? "
+                              + "WHERE " + FIELD_PRODUCT_CHANGE_ID + "=?";
+            preparedStatement = connect.prepareStatement(sqlString);
+            preparedStatement.setInt(1, status);
+            preparedStatement.setInt(2, id);
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected == 0) {
+                return false;
+            }
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            close();
+        }
+
+        return true;
     }
 
     // You need to close the resultSet

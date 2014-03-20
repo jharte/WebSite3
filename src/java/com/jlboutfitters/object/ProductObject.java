@@ -40,6 +40,23 @@ public class ProductObject {
         categoryId = _categoryId;
     }
 
+    public ProductObject(int _productId,
+                         String _productCode,
+                         String _productName,
+                         String _productDescription,
+                         BigDecimal _price,
+                         int _vendorId,
+                         int _categoryId) {
+        this();
+        productId = _productId;
+        productCode = _productCode;
+        productName = _productName;
+        productDescription = _productDescription;
+        price = _price;
+        vendorId = _vendorId;
+        categoryId = _categoryId;
+    }
+
     public int getProductId() {
         return productId;
     }
@@ -78,6 +95,10 @@ public class ProductObject {
 
     public void setPrice(double value) {
         price = new BigDecimal(value).setScale(2, RoundingMode.HALF_UP);
+    }
+
+    public void setPrice(BigDecimal value) {
+        price = value;
     }
 
     public int getVendorId() {

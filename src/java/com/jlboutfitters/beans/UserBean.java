@@ -21,6 +21,14 @@ public class UserBean extends BaseBean {
     public static final String PROP_FIRST_NAME = "firstName";
     public static final String PROP_LAST_NAME = "lastName";
 
+    public static final String LABEL_USER_TYPE = "User Type";
+    public static final String LABEL_LOGIN_ID = "Login Id";
+    public static final String LABEL_LOGIN_PW = "Login Password";
+    public static final String LABEL_LOGIN_PW_QUESTION = "Password Question";
+    public static final String LABEL_LOGIN_PW_ANSWER = "Password Answer";
+    public static final String LABEL_FIRST_NAME = "First Name";
+    public static final String LABEL_LAST_NAME = "Last Name";
+
     private int userType;
     private String loginId;
     private String loginPw;

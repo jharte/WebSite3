@@ -2,6 +2,7 @@
 <%@ page import="com.jlboutfitters.beans.PhoneNumberBean" %>
 <%@ page import="com.jlboutfitters.beans.CompanyBean" %>
 <%@ page import="com.jlboutfitters.businessObjects.Company" %>
+<%@ page import="java.util.Enumeration" %>
 
 <%
     // These can be put into a class

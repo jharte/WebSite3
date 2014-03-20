@@ -17,25 +17,26 @@ public class CustomerBean extends UserBean {
     public static final String PROP_BIRTH_DATE = "birthDate";
     public static final String PROP_PHONE_NUMBER = "phoneNumber";
     public static final String PROP_MAILING_ADDRESS = "mailingAddress";
-    public static final String PROP_GENDER = "gender";
+    //public static final String PROP_GENDER = "gender";
 
     private String emailAddress;
     private Date birthDate;
     private PhoneNumberBean phoneNumber;
     private AddressBean mailingAddress;
-    private GenderBean gender;
+    //private GenderBean gender;
 
     public CustomerBean() {
         super();
     }
 
-    public CustomerBean(CustomerObject customerObject, QuestionBean _loginPwQuestion, AddressBean _mailingAddress, GenderBean _gender) {
+    //public CustomerBean(CustomerObject customerObject, QuestionBean _loginPwQuestion, AddressBean _mailingAddress, GenderBean _gender) {
+    public CustomerBean(CustomerObject customerObject, QuestionBean _loginPwQuestion, AddressBean _mailingAddress) {
         super(USER_TYPE_CUSTOMER, customerObject.getLoginId(), customerObject.getLoginPw(), customerObject.getLoginPwAnswer(), customerObject.getFirstName(), customerObject.getLastName(), _loginPwQuestion);
         emailAddress = customerObject.getEmailAddress();
         birthDate = customerObject.getBirthDate();
         phoneNumber = new PhoneNumberBean(customerObject.getPhoneCountryPfx(), customerObject.getPhoneLineNumber(), customerObject.getPhoneExtension());
         mailingAddress = _mailingAddress;
-        gender = _gender;
+        //gender = _gender;
     }
 
     public String getEmailAddress() {
@@ -78,13 +79,13 @@ public class CustomerBean extends UserBean {
         propertySupport.firePropertyChange(PROP_MAILING_ADDRESS, oldValue, mailingAddress);
     }
 
-    public GenderBean getGender() {
-        return gender;
-    }
-
-    public void setGender(GenderBean value) {
-        GenderBean oldValue = gender;
-        gender = value;
-        propertySupport.firePropertyChange(PROP_GENDER, oldValue, gender);
-    }
+//    public GenderBean getGender() {
+//        return gender;
+//    }
+//
+//    public void setGender(GenderBean value) {
+//        GenderBean oldValue = gender;
+//        gender = value;
+//        propertySupport.firePropertyChange(PROP_GENDER, oldValue, gender);
+//    }
 }

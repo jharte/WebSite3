@@ -6,7 +6,7 @@ package com.jlboutfitters.beans;
 
 import com.jlboutfitters.object.VendorObject;
 
-/**
+/**java.util.ResourceBundle.getBundle("com/jlboutfitters/beans/BeansBundle").getString("Test1")
  *
  * @author JamesHarte
  */
